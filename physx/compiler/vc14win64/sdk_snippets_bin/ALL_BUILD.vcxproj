@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="checked|x64">
+      <Configuration>checked</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="profile|x64">
+      <Configuration>profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A3E36CF3-F406-3450-8A1E-21D54C0527E2}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='checked|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='profile|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/snippets/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_snippets_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='debug|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetVehicleTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetVehicleTemplate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='debug|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='checked|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/snippets/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='checked|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_snippets_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='checked|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetVehicleTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetVehicleTemplate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='checked|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='checked|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='profile|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/snippets/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='profile|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_snippets_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='profile|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetVehicleTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetVehicleTemplate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='profile|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='profile|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='release|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/snippets/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_snippets_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='release|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetVehicleTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetVehicleTemplate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='release|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\ZERO_CHECK.vcxproj">
+      <Project>{6AFD811F-C0C0-352E-BEF0-9A3CE5FC885A}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetArticulation.vcxproj">
+      <Project>{A5C07A7E-08A0-32BC-BE75-8613F17F9D5A}</Project>
+      <Name>SnippetArticulation</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetBVHStructure.vcxproj">
+      <Project>{33F11AA9-E670-3263-9610-7534AF353BCE}</Project>
+      <Name>SnippetBVHStructure</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetContactModification.vcxproj">
+      <Project>{F577C5E8-AC78-35C9-9415-C03952F33C6F}</Project>
+      <Name>SnippetContactModification</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetContactReport.vcxproj">
+      <Project>{94ADD838-4083-3A78-853D-586BC8A321E6}</Project>
+      <Name>SnippetContactReport</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetContactReportCCD.vcxproj">
+      <Project>{E7E1C3A0-3B97-391E-8769-4C7A75CB0CF9}</Project>
+      <Name>SnippetContactReportCCD</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetConvert.vcxproj">
+      <Project>{E71228AB-A4A4-34CC-858F-82ABD66298E4}</Project>
+      <Name>SnippetConvert</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetConvexMeshCreate.vcxproj">
+      <Project>{C8EEAEA6-3670-3E8B-BFEF-0A81D09F8404}</Project>
+      <Name>SnippetConvexMeshCreate</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetCustomJoint.vcxproj">
+      <Project>{7EFD45A3-B70E-303E-917E-ACA4B658C061}</Project>
+      <Name>SnippetCustomJoint</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetCustomProfiler.vcxproj">
+      <Project>{B3DA8192-D602-34BA-B55E-54C0B6493AA7}</Project>
+      <Name>SnippetCustomProfiler</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetDeformableMesh.vcxproj">
+      <Project>{9D49A450-B569-3A2E-9DF5-9F9119C8B241}</Project>
+      <Name>SnippetDeformableMesh</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetDelayLoadHook.vcxproj">
+      <Project>{036F8C47-BF42-3039-9DA1-D8D9249934A8}</Project>
+      <Name>SnippetDelayLoadHook</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetHelloGRB.vcxproj">
+      <Project>{BDB272B3-29A8-3298-94F6-4C15880BBD99}</Project>
+      <Name>SnippetHelloGRB</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetHelloWorld.vcxproj">
+      <Project>{7E55D186-4011-324D-8A5B-C58912DB0E7D}</Project>
+      <Name>SnippetHelloWorld</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetImmediateArticulation.vcxproj">
+      <Project>{608448E5-D45D-3A47-8A04-392C0302F404}</Project>
+      <Name>SnippetImmediateArticulation</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetImmediateMode.vcxproj">
+      <Project>{2125DEEA-25E6-3DF0-856B-DCF8D8E09E7D}</Project>
+      <Name>SnippetImmediateMode</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetJoint.vcxproj">
+      <Project>{83E5202A-02CC-368F-8141-04359F3E43D9}</Project>
+      <Name>SnippetJoint</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetLoadCollection.vcxproj">
+      <Project>{8E0C466A-962E-3253-9AE4-34621E84078E}</Project>
+      <Name>SnippetLoadCollection</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetMBP.vcxproj">
+      <Project>{B858EDB2-99BC-3459-9455-2BF6566CC066}</Project>
+      <Name>SnippetMBP</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetMultiThreading.vcxproj">
+      <Project>{904C0F91-1446-3E5A-B755-DE67AB6CEA4B}</Project>
+      <Name>SnippetMultiThreading</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetNestedScene.vcxproj">
+      <Project>{42B9F120-8F4B-3F7C-9AB0-3A51BF434FBD}</Project>
+      <Name>SnippetNestedScene</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetPrunerSerialization.vcxproj">
+      <Project>{0BC7D4AC-D63F-33D3-BDC7-DE4A73B9DA04}</Project>
+      <Name>SnippetPrunerSerialization</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetRaycastCCD.vcxproj">
+      <Project>{3EB74AD6-B942-3E0A-A4A0-9D5267537D7B}</Project>
+      <Name>SnippetRaycastCCD</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetRender.vcxproj">
+      <Project>{75B37DC8-23FF-3FA6-B883-8426D9507F19}</Project>
+      <Name>SnippetRender</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetSerialization.vcxproj">
+      <Project>{CDEB140C-2D2A-3C3E-9822-6468D5FC8378}</Project>
+      <Name>SnippetSerialization</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetSplitFetchResults.vcxproj">
+      <Project>{47A3A65F-75C9-3FC0-8901-D3BDC516C8E8}</Project>
+      <Name>SnippetSplitFetchResults</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetSplitSim.vcxproj">
+      <Project>{10C11CBE-FD6D-3506-8D09-BFE24CA3E867}</Project>
+      <Name>SnippetSplitSim</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetStepper.vcxproj">
+      <Project>{8D49FFFA-0B7C-31AF-B223-78BFE45B712B}</Project>
+      <Name>SnippetStepper</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetToleranceScale.vcxproj">
+      <Project>{0E504170-8890-3074-A6D4-40F8DE957CD4}</Project>
+      <Name>SnippetToleranceScale</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetTriangleMeshCreate.vcxproj">
+      <Project>{66AE0CA9-2E08-3647-A1C4-494FE31072ED}</Project>
+      <Name>SnippetTriangleMeshCreate</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetUtils.vcxproj">
+      <Project>{21DC01A5-477A-34C2-ADA6-9BAF79B47AA6}</Project>
+      <Name>SnippetUtils</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetVehicle4W.vcxproj">
+      <Project>{414A9916-A0B7-37A6-AB18-BB79846C5516}</Project>
+      <Name>SnippetVehicle4W</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetVehicleContactMod.vcxproj">
+      <Project>{E341B595-08BA-361D-B516-C89C99B0E807}</Project>
+      <Name>SnippetVehicleContactMod</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetVehicleMultiThreading.vcxproj">
+      <Project>{A4031C5F-1DB9-32F2-8284-8B4ABF4693EC}</Project>
+      <Name>SnippetVehicleMultiThreading</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetVehicleNoDrive.vcxproj">
+      <Project>{798C512C-C27F-3076-A702-7F32E1B3DAF8}</Project>
+      <Name>SnippetVehicleNoDrive</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetVehicleScale.vcxproj">
+      <Project>{B364E009-BCDE-3365-88D7-8FDF2ADB1D7C}</Project>
+      <Name>SnippetVehicleScale</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetVehicleTank.vcxproj">
+      <Project>{5F2C5F9E-053E-3A49-8863-A6526388D12F}</Project>
+      <Name>SnippetVehicleTank</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

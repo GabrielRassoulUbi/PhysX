@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="checked|x64">
+      <Configuration>checked</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="profile|x64">
+      <Configuration>profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A3E36CF3-F406-3450-8A1E-21D54C0527E2}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='checked|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='profile|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\MyPhysX\PhysX\physx\samples\compiler\cmake\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/samples/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_samples_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='debug|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\externals\targa\targa-config-version.cmake;D:\MyPhysX\PhysX\externals\targa\targa-config.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleBase.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleFramework.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SamplePlatform.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleRenderer.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\Samples.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SamplesToolkit.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleBase.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleFramework.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SamplePlatform.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleRenderer.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\Samples.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SamplesToolkit.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='debug|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='checked|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/samples/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='checked|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_samples_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='checked|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\externals\targa\targa-config-version.cmake;D:\MyPhysX\PhysX\externals\targa\targa-config.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleBase.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleFramework.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SamplePlatform.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleRenderer.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\Samples.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SamplesToolkit.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleBase.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleFramework.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SamplePlatform.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleRenderer.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\Samples.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SamplesToolkit.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='checked|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='checked|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='profile|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/samples/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='profile|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_samples_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='profile|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\externals\targa\targa-config-version.cmake;D:\MyPhysX\PhysX\externals\targa\targa-config.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleBase.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleFramework.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SamplePlatform.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleRenderer.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\Samples.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SamplesToolkit.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleBase.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleFramework.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SamplePlatform.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleRenderer.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\Samples.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SamplesToolkit.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='profile|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='profile|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='release|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/samples/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_samples_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='release|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\externals\targa\targa-config-version.cmake;D:\MyPhysX\PhysX\externals\targa\targa-config.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleBase.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleFramework.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SamplePlatform.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SampleRenderer.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\Samples.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\SamplesToolkit.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleBase.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleFramework.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SamplePlatform.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SampleRenderer.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\Samples.cmake;D:\MyPhysX\PhysX\physx\samples\compiler\cmake\windows\SamplesToolkit.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='release|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\ZERO_CHECK.vcxproj">
+      <Project>{6AFD811F-C0C0-352E-BEF0-9A3CE5FC885A}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\SampleBase.vcxproj">
+      <Project>{201816D7-B2F8-3F84-8912-8903FA5CCD0C}</Project>
+      <Name>SampleBase</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\SampleFramework.vcxproj">
+      <Project>{29168146-2A78-3B0A-A0CE-2FE7066FF50B}</Project>
+      <Name>SampleFramework</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\SamplePlatform.vcxproj">
+      <Project>{18EFD525-154A-33FE-B008-5843D4A82C79}</Project>
+      <Name>SamplePlatform</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\SampleRenderer.vcxproj">
+      <Project>{C5C226CE-8C66-37AE-805E-2CABA6995E54}</Project>
+      <Name>SampleRenderer</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\SampleToolkit.vcxproj">
+      <Project>{87ED4B69-D22D-3A4E-BD71-E0B041239194}</Project>
+      <Name>SampleToolkit</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_samples_bin\Samples.vcxproj">
+      <Project>{FAA2E93D-3576-35C1-B0CA-B70118A7CE42}</Project>
+      <Name>Samples</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

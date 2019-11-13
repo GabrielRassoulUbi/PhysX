@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="checked|x64">
+      <Configuration>checked</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="profile|x64">
+      <Configuration>profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8D49FFFA-0B7C-31AF-B223-78BFE45B712B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>SnippetStepper</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">SnippetStepper.dir\debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug|x64'">SnippetStepper_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='checked|x64'">D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='checked|x64'">SnippetStepper.dir\checked\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='checked|x64'">SnippetStepper_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='checked|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='checked|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='checked|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='profile|x64'">D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='profile|x64'">SnippetStepper.dir\profile\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='profile|x64'">SnippetStepper_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='profile|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='profile|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='profile|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">SnippetStepper.dir\release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release|x64'">SnippetStepper_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4514;4820;4127;4710;4711;4577;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>_DEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_DEBUG=1;PX_CHECKED=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR="debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_DEBUG=1;PX_CHECKED=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR=\"debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysXExtensions_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysX_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysXPvdSDK_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysXVehicle_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysXCharacterKinematic_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysXCooking_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysXCommon_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\SnippetUtils_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\SnippetRender_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysXPvdSDK_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\debug\PhysXFoundation_64.lib;D:\MyPhysX\PhysX\physx\snippets\Graphics\lib\win64\glut\glut32.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyPhysX/PhysX/physx/bin/win.x86_64.vc140.mt/debug/SnippetStepper_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyPhysX/PhysX/physx/bin/win.x86_64.vc140.mt/debug/SnippetStepper_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4514;4820;4127;4710;4711;4577;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_CHECKED=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR="checked";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_CHECKED=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR=\"checked\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysXExtensions_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysX_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysXPvdSDK_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysXVehicle_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysXCharacterKinematic_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysXCooking_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysXCommon_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\SnippetUtils_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\SnippetRender_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysXPvdSDK_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\checked\PhysXFoundation_64.lib;D:\MyPhysX\PhysX\physx\snippets\Graphics\lib\win64\glut\glut32.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyPhysX/PhysX/physx/bin/win.x86_64.vc140.mt/checked/SnippetStepper_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyPhysX/PhysX/physx/bin/win.x86_64.vc140.mt/checked/SnippetStepper_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4514;4820;4127;4710;4711;4577;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_PROFILE=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR="profile";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_PROFILE=1;PX_NVTX=0;PX_SUPPORT_PVD=1;CMAKE_INTDIR=\"profile\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysXExtensions_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysX_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysXPvdSDK_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysXVehicle_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysXCharacterKinematic_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysXCooking_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysXCommon_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\SnippetUtils_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\SnippetRender_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysXPvdSDK_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\profile\PhysXFoundation_64.lib;D:\MyPhysX\PhysX\physx\snippets\Graphics\lib\win64\glut\glut32.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyPhysX/PhysX/physx/bin/win.x86_64.vc140.mt/profile/SnippetStepper_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyPhysX/PhysX/physx/bin/win.x86_64.vc140.mt/profile/SnippetStepper_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4514;4820;4127;4710;4711;4577;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_SUPPORT_PVD=0;CMAKE_INTDIR="release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_HAS_ITERATOR_DEBUGGING=0;_ITERATOR_DEBUG_LEVEL=0;NDEBUG;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;RENDER_SNIPPET;PX_SUPPORT_PVD=0;CMAKE_INTDIR=\"release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyPhysX\PhysX\physx\include;D:\MyPhysX\PhysX\physx\source\physxextensions\src;D:\MyPhysX\PhysX\physx\..\pxshared\include;D:\MyPhysX\PhysX\physx\source\foundation\include;D:\MyPhysX\PhysX\physx\source\geomutils\include;D:\MyPhysX\PhysX\physx\source\geomutils\src;D:\MyPhysX\PhysX\physx\source\geomutils\src\contact;D:\MyPhysX\PhysX\physx\source\geomutils\src\common;D:\MyPhysX\PhysX\physx\source\geomutils\src\convex;D:\MyPhysX\PhysX\physx\source\geomutils\src\distance;D:\MyPhysX\PhysX\physx\source\geomutils\src\sweep;D:\MyPhysX\PhysX\physx\source\geomutils\src\gjk;D:\MyPhysX\PhysX\physx\source\geomutils\src\intersection;D:\MyPhysX\PhysX\physx\source\geomutils\src\mesh;D:\MyPhysX\PhysX\physx\source\geomutils\src\hf;D:\MyPhysX\PhysX\physx\source\geomutils\src\pcm;D:\MyPhysX\PhysX\physx\source\geomutils\src\ccd;D:\MyPhysX\PhysX\physx\snippets\Graphics\include\win32\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysXExtensions_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysX_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysXPvdSDK_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysXVehicle_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysXCharacterKinematic_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysXCooking_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysXCommon_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\SnippetUtils_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\SnippetRender_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysXPvdSDK_static_64.lib;D:\MyPhysX\PhysX\physx\bin\win.x86_64.vc140.mt\release\PhysXFoundation_64.lib;D:\MyPhysX\PhysX\physx\snippets\Graphics\lib\win64\glut\glut32.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyPhysX/PhysX/physx/bin/win.x86_64.vc140.mt/release/SnippetStepper_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyPhysX/PhysX/physx/bin/win.x86_64.vc140.mt/release/SnippetStepper_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/snippets/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_snippets_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='debug|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetVehicleTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetVehicleTemplate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='debug|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='checked|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/snippets/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='checked|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_snippets_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='checked|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetVehicleTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetVehicleTemplate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='checked|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='checked|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='profile|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/snippets/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='profile|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_snippets_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='profile|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetVehicleTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetVehicleTemplate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='profile|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='profile|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='release|x64'">Building Custom Rule D:/MyPhysX/PhysX/physx/snippets/compiler/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyPhysX/PhysX/physx/compiler/public -BD:/MyPhysX/PhysX/physx/compiler/vc14win64 --check-stamp-file D:/MyPhysX/PhysX/physx/compiler/vc14win64/sdk_snippets_bin/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='release|x64'">D:\MyPhysX\PhysX\externals\cmakemodules\ConfigureFileMT.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\GetCompilerAndPlatform.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\NvidiaBuildOptions.cmake;D:\MyPhysX\PhysX\externals\cmakemodules\SetOutputPaths.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\SnippetVehicleTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\CMakeLists.txt;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetRender.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetTemplate.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetUtils.cmake;D:\MyPhysX\PhysX\physx\snippets\compiler\cmake\windows\SnippetVehicleTemplate.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='release|x64'">D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\MyPhysX\PhysX\physx\snippets\snippetcommon\ClassicMain.cpp" />
+    <ClInclude Include="D:\MyPhysX\PhysX\physx\snippets\snippetcommon\SnippetPrint.h" />
+    <ClInclude Include="D:\MyPhysX\PhysX\physx\snippets\snippetcommon\SnippetPVD.h" />
+    <ClCompile Include="D:\MyPhysX\PhysX\physx\snippets\snippetstepper\SnippetStepper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\ZERO_CHECK.vcxproj">
+      <Project>{6AFD811F-C0C0-352E-BEF0-9A3CE5FC885A}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_source_bin\PhysX.vcxproj">
+      <Project>{71D3DCB6-B7DE-3AC7-9ABF-AA61B9163760}</Project>
+      <Name>PhysX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_source_bin\PhysXCharacterKinematic.vcxproj">
+      <Project>{3B3905F6-E30C-370A-9CB4-9481634A49C9}</Project>
+      <Name>PhysXCharacterKinematic</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_source_bin\PhysXCommon.vcxproj">
+      <Project>{8949588E-1729-3D31-BB56-C8CFD84256A8}</Project>
+      <Name>PhysXCommon</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_source_bin\PhysXCooking.vcxproj">
+      <Project>{AAB2D595-9047-3514-93DB-3F00A55C9A1E}</Project>
+      <Name>PhysXCooking</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_source_bin\PhysXExtensions.vcxproj">
+      <Project>{2D8A2BFA-84FD-302B-8A70-F36CD7B8253F}</Project>
+      <Name>PhysXExtensions</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_source_bin\PhysXFoundation.vcxproj">
+      <Project>{759017FC-6943-37F2-A65C-250B0F361C04}</Project>
+      <Name>PhysXFoundation</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_source_bin\PhysXPvdSDK.vcxproj">
+      <Project>{AC04DEB7-96FA-3B48-B3F5-1046CE0F2CE5}</Project>
+      <Name>PhysXPvdSDK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_source_bin\PhysXVehicle.vcxproj">
+      <Project>{0163E6B4-1333-3BFD-9863-D9ACF979F7BA}</Project>
+      <Name>PhysXVehicle</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetRender.vcxproj">
+      <Project>{75B37DC8-23FF-3FA6-B883-8426D9507F19}</Project>
+      <Name>SnippetRender</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyPhysX\PhysX\physx\compiler\vc14win64\sdk_snippets_bin\SnippetUtils.vcxproj">
+      <Project>{21DC01A5-477A-34C2-ADA6-9BAF79B47AA6}</Project>
+      <Name>SnippetUtils</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
