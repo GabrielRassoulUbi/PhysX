@@ -55,8 +55,7 @@
 	private:
 
 		PxRigidDynamic* m_bar;
-		// In radians/seconds
-		PxReal			m_angularBarSpeed;
+		float m_elapsedTimeSinceFirstPreRender = 0.0f;
 	};
 
 #endif

@@ -52,10 +52,24 @@ using namespace SampleFramework;
 
 REGISTER_SAMPLE(SampleCustom, "SampleCustom")
 
+///////////////////////////////////////////////////////////////////////////////
+
+#define PI							PxPi
+#define PI_DIV_2					PxPiDivTwo
+#define PI_DIV_3					PI / 3.0f
+#define PI_DIV_4					PxPiDivFour
+#define PI_DIV_6					PI_DIV_2 / 3.0f
+#define PI_DIV_8					PI_DIV_4 / 2.0f
+#define PI_DIV_12					PI_DIV_6 / 2.0f
+#define PI_DIV_16					PI_DIV_8 / 2.0f
+
+///////////////////////////////////////////////////////////////////////////////
 
 #define EX0_SPHERES_RADIUS			0.2f
 
-#define EX0_NB_CAPSULES				20
+#define EX0_USE_CAPSULES			0
+
+#define EX0_NB_LINKS				23
 #define EX0_CAPSULES_RADIUS			0.05f
 #define EX0_CAPSULES_DIAMETER		EX0_CAPSULES_RADIUS * 2.0f
 #define EX0_CAPSULES_MASS			1.0f
@@ -66,20 +80,12 @@ REGISTER_SAMPLE(SampleCustom, "SampleCustom")
 
 #define EX0_BAR_LENGTH				10.0f
 #define EX0_BAR_RADIUS				0.2f
-#define EX0_ANGULAR_SPEED_Z			1.0f
+#define EX0_ANGULAR_SPEED			-PI_DIV_4	// In radians/seconds
+#define EX0_STABILIZATION_SETUP_DELAY	2
 
 #define EX0_NB_JOINTS_STEPS			100
-#define EX0_NB_POS_ITERS			30
-#define EX0_NB_VEL_ITERS			30
-
-#define PI							PxPi
-#define PI_DIV_2					PxPiDivTwo
-#define PI_DIV_3					PI / 3.0f
-#define PI_DIV_4					PxPiDivFour
-#define PI_DIV_6					PI_DIV_2 / 3.0f
-#define PI_DIV_8					PI_DIV_4 / 2.0f
-#define PI_DIV_12					PI_DIV_6 / 2.0f
-#define PI_DIV_16					PI_DIV_8 / 2.0f
+#define EX0_NB_POS_ITERS			1
+#define EX0_NB_VEL_ITERS			1
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -96,10 +102,14 @@ void SampleCustom::onTickPreRender(float dtime)
 {
 	PhysXSample::onTickPreRender(dtime);
 
-	// Update angular velocity FIXME
-	PxTransform transform = m_bar->getGlobalPose();
-	//transform.rotate(PxVec3(1, 0, 0));
-	m_bar->setKinematicTarget(PxTransform(transform.p, transform.q * PxQuat(m_angularBarSpeed * dtime, PxVec3(1, 0, 0))));
+	// Update angular velocity
+	if (m_elapsedTimeSinceFirstPreRender > EX0_STABILIZATION_SETUP_DELAY)
+	{
+		PxTransform transform = m_bar->getGlobalPose();
+		m_bar->setKinematicTarget(PxTransform(transform.p, transform.q * PxQuat(EX0_ANGULAR_SPEED * dtime, PxVec3(1, 0, 0))));
+	}
+	else
+		m_elapsedTimeSinceFirstPreRender += dtime;
 }
 
 void SampleCustom::onTickPostRender(float dtime)
@@ -164,8 +174,6 @@ void SampleCustom::onInit()
 	mCameraController.init(PxVec3(0.0f, 5.0f, 15.0f), PxVec3(0.0f, 0.0f, 0.0f));
 	mCameraController.setMouseSensitivity(0.5f);
 
-	m_angularBarSpeed = -PI_DIV_4;
-
 	// Set init position
 	PxVec3 pos(0, 1, 0);
 	PxVec3 linVel(0);
@@ -177,17 +185,27 @@ void SampleCustom::onInit()
 	pos.y += EX0_SPHERES_RADIUS;
 
 	// Create capsules as chain links
-	PxRigidDynamic* capsules[EX0_NB_CAPSULES];
+	PxRigidDynamic* links[EX0_NB_LINKS];
 	int linkMaterial = MATERIAL_RED;
-	for (size_t i = 0; i < EX0_NB_CAPSULES; ++i)
+	for (size_t i = 0; i < EX0_NB_LINKS; ++i)
 	{
-		pos.y += EX0_CAPSULES_RADIUS + EX0_CAPSULES_HALF_HEIGHT;
-		capsules[i] = createCapsule(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_CAPSULES_RADIUS, EX0_CAPSULES_HALF_HEIGHT, &linVel, mManagedMaterials[linkMaterial++]);
-		PxRigidBodyExt::setMassAndUpdateInertia(*capsules[i], EX0_CAPSULES_MASS);
-		capsules[i]->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
+		if (EX0_USE_CAPSULES)
+		{
+			pos.y += EX0_CAPSULES_RADIUS + EX0_CAPSULES_HALF_HEIGHT;
+			links[i] = createCapsule(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_CAPSULES_RADIUS, EX0_CAPSULES_HALF_HEIGHT, &linVel, mManagedMaterials[linkMaterial++]);
+			pos.y += EX0_CAPSULES_RADIUS + EX0_CAPSULES_HALF_HEIGHT;
+		}
+		else
+		{
+			pos.y += EX0_CAPSULES_RADIUS;
+			links[i] = createSphere(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_CAPSULES_RADIUS, &linVel, mManagedMaterials[linkMaterial++]);
+			pos.y += EX0_CAPSULES_RADIUS;
+		}
+
+		PxRigidBodyExt::setMassAndUpdateInertia(*links[i], EX0_CAPSULES_MASS);
+		links[i]->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
 		if (linkMaterial > MATERIAL_BLUE)
-			linkMaterial = MATERIAL_RED;
-		pos.y += EX0_CAPSULES_RADIUS + EX0_CAPSULES_HALF_HEIGHT;
+			linkMaterial = MATERIAL_RED;	
 	}
 	
 	// Create capsule as bar
@@ -202,23 +220,29 @@ void SampleCustom::onInit()
 		// Create weight/first chain link joint
 		{
 			PxRigidActor* actor0 = weight;
-			PxRigidActor* actor1 = capsules[0];
+			PxRigidActor* actor1 = links[0];
 			PxSphericalJoint* wljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_SPHERES_RADIUS, 0, 0), actor1, PxTransform(-EX0_CAPSULES_HALF_HEIGHT - EX0_CAPSULES_RADIUS, 0, 0));
+			wljoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
+			wljoint->getConstraint()->setMinResponseThreshold(1e-8);
 		}
 
 		// Create chain link/chain link joints
-		for (size_t i = 0; i < EX0_NB_CAPSULES - 1; ++i)
+		for (size_t i = 0; i < EX0_NB_LINKS - 1; ++i)
 		{
-			PxRigidActor* actor0 = capsules[i];
-			PxRigidActor* actor1 = capsules[i + 1];
+			PxRigidActor* actor0 = links[i];
+			PxRigidActor* actor1 = links[i + 1];
 			PxSphericalJoint* lljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_CAPSULES_HALF_HEIGHT + EX0_CAPSULES_RADIUS, 0, 0), actor1, PxTransform(-EX0_CAPSULES_HALF_HEIGHT - EX0_CAPSULES_RADIUS, 0, 0));
+			lljoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
+			lljoint->getConstraint()->setMinResponseThreshold(1e-8);
 		}
 
 		// Create last chain link/bar joint
 		{
-			PxRigidActor* actor0 = capsules[EX0_NB_CAPSULES - 1];
-			PxRigidActor* actor1 = m_bar;
-			PxSphericalJoint* lbjoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_CAPSULES_HALF_HEIGHT + EX0_CAPSULES_RADIUS, 0, 0), actor1, PxTransform(0, -EX0_BAR_RADIUS, 0));
+			PxRigidActor* actor0 = m_bar;
+			PxRigidActor* actor1 = links[EX0_NB_LINKS - 1];
+			PxSphericalJoint* lbjoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(0, -EX0_BAR_RADIUS, 0), actor1, PxTransform(EX0_CAPSULES_HALF_HEIGHT + EX0_CAPSULES_RADIUS, 0, 0));
+			lbjoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
+			lbjoint->getConstraint()->setMinResponseThreshold(1e-8);
 		}
 	}
 }
