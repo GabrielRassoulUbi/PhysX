@@ -52,6 +52,35 @@ using namespace SampleFramework;
 
 REGISTER_SAMPLE(SampleCustom, "SampleCustom")
 
+
+#define EX0_SPHERES_RADIUS			0.2f
+
+#define EX0_NB_CAPSULES				20
+#define EX0_CAPSULES_RADIUS			0.05f
+#define EX0_CAPSULES_DIAMETER		EX0_CAPSULES_RADIUS * 2.0f
+#define EX0_CAPSULES_MASS			1.0f
+#define EX0_CAPSULES_HEIGHT			0.1f
+#define EX0_CAPSULES_HALF_HEIGHT	EX0_CAPSULES_HEIGHT / 2.0f
+
+#define EX0_WEIGHT_MASS				EX0_CAPSULES_MASS * 1.0f
+
+#define EX0_BAR_LENGTH				10.0f
+#define EX0_BAR_RADIUS				0.2f
+#define EX0_ANGULAR_SPEED_Z			1.0f
+
+#define EX0_NB_JOINTS_STEPS			100
+#define EX0_NB_POS_ITERS			30
+#define EX0_NB_VEL_ITERS			30
+
+#define PI							PxPi
+#define PI_DIV_2					PxPiDivTwo
+#define PI_DIV_3					PI / 3.0f
+#define PI_DIV_4					PxPiDivFour
+#define PI_DIV_6					PI_DIV_2 / 3.0f
+#define PI_DIV_8					PI_DIV_4 / 2.0f
+#define PI_DIV_12					PI_DIV_6 / 2.0f
+#define PI_DIV_16					PI_DIV_8 / 2.0f
+
 ///////////////////////////////////////////////////////////////////////////////
 
 SampleCustom::SampleCustom(PhysXSampleApplication& app) :
@@ -66,6 +95,11 @@ SampleCustom::~SampleCustom()
 void SampleCustom::onTickPreRender(float dtime)
 {
 	PhysXSample::onTickPreRender(dtime);
+
+	// Update angular velocity FIXME
+	PxTransform transform = m_bar->getGlobalPose();
+	//transform.rotate(PxVec3(1, 0, 0));
+	m_bar->setKinematicTarget(PxTransform(transform.p, transform.q * PxQuat(m_angularBarSpeed * dtime, PxVec3(1, 0, 0))));
 }
 
 void SampleCustom::onTickPostRender(float dtime)
@@ -125,8 +159,68 @@ void SampleCustom::onInit()
 
 	mApplication.setMouseCursorHiding(true);
 	mApplication.setMouseCursorRecentering(true);
-	mCameraController.init(PxVec3(0.0f, 10.0f, 0.0f), PxVec3(0.0f, 0.0f, 0.0f));
+
+	// Set camera position and orientation
+	mCameraController.init(PxVec3(0.0f, 5.0f, 15.0f), PxVec3(0.0f, 0.0f, 0.0f));
 	mCameraController.setMouseSensitivity(0.5f);
+
+	m_angularBarSpeed = -PI_DIV_4;
+
+	// Set init position
+	PxVec3 pos(0, 1, 0);
+	PxVec3 linVel(0);
+	
+	// Create sphere as weight
+	PxRigidDynamic* weight = createSphere(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_SPHERES_RADIUS, &linVel, mManagedMaterials[MATERIAL_GREY]);
+	PxRigidBodyExt::setMassAndUpdateInertia(*weight, EX0_WEIGHT_MASS);
+	weight->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
+	pos.y += EX0_SPHERES_RADIUS;
+
+	// Create capsules as chain links
+	PxRigidDynamic* capsules[EX0_NB_CAPSULES];
+	int linkMaterial = MATERIAL_RED;
+	for (size_t i = 0; i < EX0_NB_CAPSULES; ++i)
+	{
+		pos.y += EX0_CAPSULES_RADIUS + EX0_CAPSULES_HALF_HEIGHT;
+		capsules[i] = createCapsule(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_CAPSULES_RADIUS, EX0_CAPSULES_HALF_HEIGHT, &linVel, mManagedMaterials[linkMaterial++]);
+		PxRigidBodyExt::setMassAndUpdateInertia(*capsules[i], EX0_CAPSULES_MASS);
+		capsules[i]->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
+		if (linkMaterial > MATERIAL_BLUE)
+			linkMaterial = MATERIAL_RED;
+		pos.y += EX0_CAPSULES_RADIUS + EX0_CAPSULES_HALF_HEIGHT;
+	}
+	
+	// Create capsule as bar
+	pos.y += EX0_BAR_RADIUS;
+	m_bar = createCapsule(PxTransform(pos/*, PxQuat(-PxPiDivFour, PxVec3(0, 1, 0))*/), EX0_BAR_RADIUS, EX0_BAR_LENGTH / 2.0f, &linVel, mManagedMaterials[MATERIAL_YELLOW]);
+	m_bar->setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true);
+	m_bar->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
+
+	// Create joints
+	for (size_t s = 0; s < EX0_NB_JOINTS_STEPS; ++s)
+	{
+		// Create weight/first chain link joint
+		{
+			PxRigidActor* actor0 = weight;
+			PxRigidActor* actor1 = capsules[0];
+			PxSphericalJoint* wljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_SPHERES_RADIUS, 0, 0), actor1, PxTransform(-EX0_CAPSULES_HALF_HEIGHT - EX0_CAPSULES_RADIUS, 0, 0));
+		}
+
+		// Create chain link/chain link joints
+		for (size_t i = 0; i < EX0_NB_CAPSULES - 1; ++i)
+		{
+			PxRigidActor* actor0 = capsules[i];
+			PxRigidActor* actor1 = capsules[i + 1];
+			PxSphericalJoint* lljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_CAPSULES_HALF_HEIGHT + EX0_CAPSULES_RADIUS, 0, 0), actor1, PxTransform(-EX0_CAPSULES_HALF_HEIGHT - EX0_CAPSULES_RADIUS, 0, 0));
+		}
+
+		// Create last chain link/bar joint
+		{
+			PxRigidActor* actor0 = capsules[EX0_NB_CAPSULES - 1];
+			PxRigidActor* actor1 = m_bar;
+			PxSphericalJoint* lbjoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_CAPSULES_HALF_HEIGHT + EX0_CAPSULES_RADIUS, 0, 0), actor1, PxTransform(0, -EX0_BAR_RADIUS, 0));
+		}
+	}
 }
 
 void SampleCustom::collectInputEvents(std::vector<const SampleFramework::InputEvent*>& inputEvents)

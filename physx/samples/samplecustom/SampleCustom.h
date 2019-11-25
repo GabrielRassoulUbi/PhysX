@@ -35,7 +35,7 @@
 
 	class SampleCustom : public PhysXSample
 	{
-		public:
+	public:
 												SampleCustom(PhysXSampleApplication& app);
 		virtual									~SampleCustom();
 
@@ -51,6 +51,12 @@
 		virtual void							helpRender(PxU32 x, PxU32 y, PxU8 textAlpha);
 		virtual	void							descriptionRender(PxU32 x, PxU32 y, PxU8 textAlpha);
 		virtual PxU32							getDebugObjectTypes() const;
+
+	private:
+
+		PxRigidDynamic* m_bar;
+		// In radians/seconds
+		PxReal			m_angularBarSpeed;
 	};
 
 #endif

@@ -2371,7 +2371,25 @@ PxRigidDynamic* PhysXSample::createSphere(const PxVec3& pos, PxReal radius, cons
 	mScene->addActor(*sphere);
 	addPhysicsActors(sphere);
 
-	if(linVel)
+	if (linVel)
+		sphere->setLinearVelocity(*linVel);
+
+	createRenderObjectsFromActor(sphere, material);
+
+	return sphere;
+}
+
+PxRigidDynamic* PhysXSample::createSphere(const PxTransform& transform, PxReal radius, const PxVec3* linVel, RenderMaterial* material, PxReal density)
+{
+	PxSceneWriteLock scopedLock(*mScene);
+	PxRigidDynamic* sphere = PxCreateDynamic(*mPhysics, transform, PxSphereGeometry(radius), *mMaterial, density);
+	PX_ASSERT(sphere);
+
+	SetupDefaultRigidDynamic(*sphere);
+	mScene->addActor(*sphere);
+	addPhysicsActors(sphere);
+
+	if (linVel)
 		sphere->setLinearVelocity(*linVel);
 
 	createRenderObjectsFromActor(sphere, material);
@@ -2394,7 +2412,26 @@ PxRigidDynamic* PhysXSample::createCapsule(const PxVec3& pos, PxReal radius, PxR
 	mScene->addActor(*capsule);
 	addPhysicsActors(capsule);
 
-	if(linVel)
+	if (linVel)
+		capsule->setLinearVelocity(*linVel);
+
+	createRenderObjectsFromActor(capsule, material);
+
+	return capsule;
+}
+
+PxRigidDynamic* PhysXSample::createCapsule(const PxTransform& transform, PxReal radius, PxReal halfHeight, const PxVec3* linVel, RenderMaterial* material, PxReal density)
+{
+	PxSceneWriteLock scopedLock(*mScene);
+
+	PxRigidDynamic* capsule = PxCreateDynamic(*mPhysics, transform, PxCapsuleGeometry(radius, halfHeight), *mMaterial, density);
+	PX_ASSERT(capsule);
+
+	SetupDefaultRigidDynamic(*capsule);
+	mScene->addActor(*capsule);
+	addPhysicsActors(capsule);
+
+	if (linVel)
 		capsule->setLinearVelocity(*linVel);
 
 	createRenderObjectsFromActor(capsule, material);
