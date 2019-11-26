@@ -67,25 +67,35 @@ REGISTER_SAMPLE(SampleCustom, "SampleCustom")
 
 #define EX0_SPHERES_RADIUS			0.2f
 
-#define EX0_USE_CAPSULES			0
+#define EX0_LINK_IS_CAPSULE
+//#define EX0_LINK_IS_SPHERE
 
-#define EX0_NB_LINKS				23
-#define EX0_CAPSULES_RADIUS			0.05f
-#define EX0_CAPSULES_DIAMETER		EX0_CAPSULES_RADIUS * 2.0f
-#define EX0_CAPSULES_MASS			1.0f
-#define EX0_CAPSULES_HEIGHT			0.1f
-#define EX0_CAPSULES_HALF_HEIGHT	EX0_CAPSULES_HEIGHT / 2.0f
+#define EX0_NB_LINKS				30
+#define EX0_LINKS_MASS				1.0f
+#define EX0_LINK_RADIUS				0.05f
 
-#define EX0_WEIGHT_MASS				EX0_CAPSULES_MASS * 1.0f
+#ifdef EX0_LINK_IS_CAPSULE
+
+	#define EX0_CAPSULES_HEIGHT			0.1f
+	#define EX0_CAPSULES_HALF_HEIGHT	EX0_CAPSULES_HEIGHT / 2.0f
+	#define EX0_LINK_HALF_LENGTH		EX0_CAPSULES_HALF_HEIGHT + EX0_LINK_RADIUS
+
+#elif defined(EX0_LINK_IS_SPHERE)
+
+	#define EX0_LINK_HALF_LENGTH		EX0_LINK_RADIUS
+
+#endif
+
+#define EX0_WEIGHT_MASS				EX0_LINKS_MASS * 1.0f
 
 #define EX0_BAR_LENGTH				10.0f
 #define EX0_BAR_RADIUS				0.2f
 #define EX0_ANGULAR_SPEED			-PI_DIV_4	// In radians/seconds
 #define EX0_STABILIZATION_SETUP_DELAY	2
 
-#define EX0_NB_JOINTS_STEPS			100
-#define EX0_NB_POS_ITERS			1
-#define EX0_NB_VEL_ITERS			1
+#define EX0_NB_JOINTS_STEPS			50
+#define EX0_NB_POS_ITERS			30
+#define EX0_NB_VEL_ITERS			30
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -182,27 +192,25 @@ void SampleCustom::onInit()
 	PxRigidDynamic* weight = createSphere(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_SPHERES_RADIUS, &linVel, mManagedMaterials[MATERIAL_GREY]);
 	PxRigidBodyExt::setMassAndUpdateInertia(*weight, EX0_WEIGHT_MASS);
 	weight->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
-	pos.y += EX0_SPHERES_RADIUS;
+	pos.y += EX0_SPHERES_RADIUS/* + EX0_LINK_HALF_LENGTH*/;
 
 	// Create capsules as chain links
 	PxRigidDynamic* links[EX0_NB_LINKS];
 	int linkMaterial = MATERIAL_RED;
 	for (size_t i = 0; i < EX0_NB_LINKS; ++i)
 	{
-		if (EX0_USE_CAPSULES)
-		{
-			pos.y += EX0_CAPSULES_RADIUS + EX0_CAPSULES_HALF_HEIGHT;
-			links[i] = createCapsule(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_CAPSULES_RADIUS, EX0_CAPSULES_HALF_HEIGHT, &linVel, mManagedMaterials[linkMaterial++]);
-			pos.y += EX0_CAPSULES_RADIUS + EX0_CAPSULES_HALF_HEIGHT;
-		}
-		else
-		{
-			pos.y += EX0_CAPSULES_RADIUS;
-			links[i] = createSphere(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_CAPSULES_RADIUS, &linVel, mManagedMaterials[linkMaterial++]);
-			pos.y += EX0_CAPSULES_RADIUS;
-		}
+		//pos.y += EX0_LINK_RADIUS;
+		//pos.y += EX0_CAPSULES_HALF_HEIGHT;
+		pos.y += EX0_LINK_HALF_LENGTH;
 
-		PxRigidBodyExt::setMassAndUpdateInertia(*links[i], EX0_CAPSULES_MASS);
+#ifdef EX0_LINK_IS_CAPSULE
+		links[i] = createCapsule(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_LINK_RADIUS, EX0_CAPSULES_HALF_HEIGHT, &linVel, mManagedMaterials[linkMaterial++]);
+#elif defined(EX0_LINK_IS_SPHERE)
+		links[i] = createSphere(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_LINK_HALF_LENGTH, &linVel, mManagedMaterials[linkMaterial++]);
+#endif
+		pos.y += EX0_LINK_HALF_LENGTH;
+
+		PxRigidBodyExt::setMassAndUpdateInertia(*links[i], EX0_LINKS_MASS);
 		links[i]->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
 		if (linkMaterial > MATERIAL_BLUE)
 			linkMaterial = MATERIAL_RED;	
@@ -221,9 +229,11 @@ void SampleCustom::onInit()
 		{
 			PxRigidActor* actor0 = weight;
 			PxRigidActor* actor1 = links[0];
-			PxSphericalJoint* wljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_SPHERES_RADIUS, 0, 0), actor1, PxTransform(-EX0_CAPSULES_HALF_HEIGHT - EX0_CAPSULES_RADIUS, 0, 0));
+			PxSphericalJoint* wljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_SPHERES_RADIUS, 0, 0), actor1, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+			/*
 			wljoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
 			wljoint->getConstraint()->setMinResponseThreshold(1e-8);
+			*/
 		}
 
 		// Create chain link/chain link joints
@@ -231,18 +241,22 @@ void SampleCustom::onInit()
 		{
 			PxRigidActor* actor0 = links[i];
 			PxRigidActor* actor1 = links[i + 1];
-			PxSphericalJoint* lljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_CAPSULES_HALF_HEIGHT + EX0_CAPSULES_RADIUS, 0, 0), actor1, PxTransform(-EX0_CAPSULES_HALF_HEIGHT - EX0_CAPSULES_RADIUS, 0, 0));
+			PxSphericalJoint* lljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_LINK_HALF_LENGTH, 0, 0), actor1, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+			/*
 			lljoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
 			lljoint->getConstraint()->setMinResponseThreshold(1e-8);
+			*/
 		}
 
 		// Create last chain link/bar joint
 		{
 			PxRigidActor* actor0 = m_bar;
 			PxRigidActor* actor1 = links[EX0_NB_LINKS - 1];
-			PxSphericalJoint* lbjoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(0, -EX0_BAR_RADIUS, 0), actor1, PxTransform(EX0_CAPSULES_HALF_HEIGHT + EX0_CAPSULES_RADIUS, 0, 0));
+			PxSphericalJoint* lbjoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(0, -EX0_BAR_RADIUS, 0), actor1, PxTransform(EX0_LINK_HALF_LENGTH, 0, 0));
+			/*
 			lbjoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
 			lbjoint->getConstraint()->setMinResponseThreshold(1e-8);
+			*/
 		}
 	}
 }
