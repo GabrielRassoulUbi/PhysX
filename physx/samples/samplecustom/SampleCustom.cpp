@@ -67,18 +67,21 @@ REGISTER_SAMPLE(SampleCustom, "SampleCustom")
 
 #define EX0_SPHERES_RADIUS			0.2f
 
+//#define EX0_JOINTS
+#define EX0_ARTICULATIONS
+
 #define EX0_LINK_IS_CAPSULE
 //#define EX0_LINK_IS_SPHERE
 
-#define EX0_NB_LINKS				30
+#define EX0_NB_LINKS				4
 #define EX0_LINKS_MASS				1.0f
 #define EX0_LINK_RADIUS				0.05f
 
 #ifdef EX0_LINK_IS_CAPSULE
 
 	#define EX0_CAPSULES_HEIGHT			0.1f
-	#define EX0_CAPSULES_HALF_HEIGHT	EX0_CAPSULES_HEIGHT / 2.0f
-	#define EX0_LINK_HALF_LENGTH		EX0_CAPSULES_HALF_HEIGHT + EX0_LINK_RADIUS
+	#define EX0_CAPSULES_HALF_HEIGHT	(EX0_CAPSULES_HEIGHT / 2.0f)
+	#define EX0_LINK_HALF_LENGTH		(EX0_CAPSULES_HALF_HEIGHT + EX0_LINK_RADIUS)
 
 #elif defined(EX0_LINK_IS_SPHERE)
 
@@ -90,12 +93,12 @@ REGISTER_SAMPLE(SampleCustom, "SampleCustom")
 
 #define EX0_BAR_LENGTH				10.0f
 #define EX0_BAR_RADIUS				0.2f
-#define EX0_ANGULAR_SPEED			-PI_DIV_4	// In radians/seconds
+#define EX0_ANGULAR_SPEED			(-PI_DIV_2)	// In radians/seconds
 #define EX0_STABILIZATION_SETUP_DELAY	2
 
-#define EX0_NB_JOINTS_STEPS			50
-#define EX0_NB_POS_ITERS			30
-#define EX0_NB_VEL_ITERS			30
+#define EX0_NB_JOINTS_STEPS			1
+#define EX0_NB_POS_ITERS			4		// Default : 4
+#define EX0_NB_VEL_ITERS			1		// Default : 1
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -111,12 +114,14 @@ SampleCustom::~SampleCustom()
 void SampleCustom::onTickPreRender(float dtime)
 {
 	PhysXSample::onTickPreRender(dtime);
-
+	
 	// Update angular velocity
 	if (m_elapsedTimeSinceFirstPreRender > EX0_STABILIZATION_SETUP_DELAY)
 	{
+		mScene->lockWrite();
 		PxTransform transform = m_bar->getGlobalPose();
 		m_bar->setKinematicTarget(PxTransform(transform.p, transform.q * PxQuat(EX0_ANGULAR_SPEED * dtime, PxVec3(1, 0, 0))));
+		mScene->unlockWrite();
 	}
 	else
 		m_elapsedTimeSinceFirstPreRender += dtime;
@@ -181,19 +186,23 @@ void SampleCustom::onInit()
 	mApplication.setMouseCursorRecentering(true);
 
 	// Set camera position and orientation
-	mCameraController.init(PxVec3(0.0f, 5.0f, 15.0f), PxVec3(0.0f, 0.0f, 0.0f));
+	mCameraController.init(PxVec3(0.0f, 3.0f, 7.0f), PxVec3(0.0f, 0.0f, 0.0f));
 	mCameraController.setMouseSensitivity(0.5f);
 
 	// Set init position
 	PxVec3 pos(0, 1, 0);
 	PxVec3 linVel(0);
+
+	mScene->lockWrite();
 	
 	// Create sphere as weight
 	PxRigidDynamic* weight = createSphere(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_SPHERES_RADIUS, &linVel, mManagedMaterials[MATERIAL_GREY]);
 	PxRigidBodyExt::setMassAndUpdateInertia(*weight, EX0_WEIGHT_MASS);
 	weight->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
+
 	pos.y += EX0_SPHERES_RADIUS/* + EX0_LINK_HALF_LENGTH*/;
 
+#ifdef EX0_JOINTS
 	// Create capsules as chain links
 	PxRigidDynamic* links[EX0_NB_LINKS];
 	int linkMaterial = MATERIAL_RED;
@@ -201,7 +210,7 @@ void SampleCustom::onInit()
 	{
 		//pos.y += EX0_LINK_RADIUS;
 		//pos.y += EX0_CAPSULES_HALF_HEIGHT;
-		pos.y += EX0_LINK_HALF_LENGTH;
+		//pos.y += EX0_LINK_HALF_LENGTH;
 
 #ifdef EX0_LINK_IS_CAPSULE
 		links[i] = createCapsule(PxTransform(pos, PxQuat(PxPiDivTwo, PxVec3(0, 0, 1))), EX0_LINK_RADIUS, EX0_CAPSULES_HALF_HEIGHT, &linVel, mManagedMaterials[linkMaterial++]);
@@ -212,16 +221,19 @@ void SampleCustom::onInit()
 
 		PxRigidBodyExt::setMassAndUpdateInertia(*links[i], EX0_LINKS_MASS);
 		links[i]->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
+
 		if (linkMaterial > MATERIAL_BLUE)
-			linkMaterial = MATERIAL_RED;	
+			linkMaterial = MATERIAL_RED;
 	}
-	
+#endif
+
 	// Create capsule as bar
 	pos.y += EX0_BAR_RADIUS;
-	m_bar = createCapsule(PxTransform(pos/*, PxQuat(-PxPiDivFour, PxVec3(0, 1, 0))*/), EX0_BAR_RADIUS, EX0_BAR_LENGTH / 2.0f, &linVel, mManagedMaterials[MATERIAL_YELLOW]);
+	m_bar = createCapsule(PxTransform(pos, PxQuat(-PI_DIV_3, PxVec3(0, 1, 0))), EX0_BAR_RADIUS, EX0_BAR_LENGTH / 2.0f, &linVel, mManagedMaterials[MATERIAL_YELLOW]);
 	m_bar->setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true);
 	m_bar->setSolverIterationCounts(EX0_NB_POS_ITERS, EX0_NB_VEL_ITERS);
 
+#ifdef EX0_JOINTS
 	// Create joints
 	for (size_t s = 0; s < EX0_NB_JOINTS_STEPS; ++s)
 	{
@@ -229,7 +241,12 @@ void SampleCustom::onInit()
 		{
 			PxRigidActor* actor0 = weight;
 			PxRigidActor* actor1 = links[0];
-			PxSphericalJoint* wljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_SPHERES_RADIUS, 0, 0), actor1, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+			PxSphericalJoint* wljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_SPHERES_RADIUS - EX0_LINK_HALF_LENGTH, 0, 0), actor1, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+			
+			/*
+			wljoint->setConstraintFlag(PxConstraintFlag::ePROJECTION, true);
+			wljoint->setProjectionLinearTolerance(0.1f);
+			*/
 			/*
 			wljoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
 			wljoint->getConstraint()->setMinResponseThreshold(1e-8);
@@ -241,7 +258,17 @@ void SampleCustom::onInit()
 		{
 			PxRigidActor* actor0 = links[i];
 			PxRigidActor* actor1 = links[i + 1];
-			PxSphericalJoint* lljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_LINK_HALF_LENGTH, 0, 0), actor1, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+			PxRigidActor* actor2 = (i + 2 < EX0_NB_LINKS) ? links[i + 2] : nullptr;
+			PxSphericalJoint* lljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(0, 0, 0), actor1, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+			if (actor2)
+			{
+				//PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_LINK_HALF_LENGTH, 0, 0), actor2, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+				PxDistanceJointCreate(*mPhysics, actor0, PxTransform(EX0_LINK_HALF_LENGTH, 0, 0), actor2, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+			}
+			/*
+			lljoint->setConstraintFlag(PxConstraintFlag::ePROJECTION, true);
+			lljoint->setProjectionLinearTolerance(0.1f);
+			*/
 			/*
 			lljoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
 			lljoint->getConstraint()->setMinResponseThreshold(1e-8);
@@ -252,13 +279,59 @@ void SampleCustom::onInit()
 		{
 			PxRigidActor* actor0 = m_bar;
 			PxRigidActor* actor1 = links[EX0_NB_LINKS - 1];
-			PxSphericalJoint* lbjoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(0, -EX0_BAR_RADIUS, 0), actor1, PxTransform(EX0_LINK_HALF_LENGTH, 0, 0));
+			PxSphericalJoint* lbjoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(0, -EX0_BAR_RADIUS + EX0_LINK_HALF_LENGTH, 0), actor1, PxTransform(EX0_LINK_HALF_LENGTH, 0, 0));
+			/*
+			lbjoint->setConstraintFlag(PxConstraintFlag::ePROJECTION, true);
+			lbjoint->setProjectionLinearTolerance(0.1f);
+			*/
 			/*
 			lbjoint->setConstraintFlag(PxConstraintFlag::eDISABLE_PREPROCESSING, true);
 			lbjoint->getConstraint()->setMinResponseThreshold(1e-8);
 			*/
 		}
 	}
+#elif defined(EX0_ARTICULATIONS)
+	// FIXME MOVE THIS CODE UPPER WITH THE OBJECTS CREATION
+
+	PxCapsuleGeometry linkGeom(EX0_LINK_RADIUS, EX0_CAPSULES_HALF_HEIGHT);
+
+	PxArticulation* articulation = mPhysics->createArticulation();
+	PxArticulationLink* articulationLinks[EX0_NB_LINKS];
+	articulationLinks[0] = articulation->createLink(nullptr, PxTransform(0, 0, 0));
+
+	PxRigidActorExt::createExclusiveShape(*articulationLinks[0], linkGeom, *mMaterial);
+	PxRigidBodyExt::updateMassAndInertia(*articulationLinks[0], 1.0f);
+
+	// Create chain link/chain link articulations
+	for (size_t i = 0; i < EX0_NB_LINKS - 1; ++i)
+	{
+		articulationLinks[i + 1] = articulation->createLink(articulationLinks[i], PxTransform(0, 0, 0));
+		PxRigidActorExt::createExclusiveShape(*articulationLinks[i + 1], linkGeom, *mMaterial);
+		PxRigidBodyExt::updateMassAndInertia(*articulationLinks[i + 1], 1.0f);
+
+		PxArticulationJoint* joint = static_cast<PxArticulationJoint*>(articulationLinks[i + 1]->getInboundJoint());
+		joint->setParentPose(PxTransform(0, 0, 0));
+		joint->setChildPose(PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+	}
+
+	mScene->addArticulation(*articulation);
+
+	
+	// Create weight/first chain link joint
+	{/*
+		PxRigidActor* actor0 = weight;
+		PxRigidActor* actor1 = articulationLinks[0];
+		PxSphericalJoint* wljoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(EX0_SPHERES_RADIUS - EX0_LINK_HALF_LENGTH, 0, 0), actor1, PxTransform(-EX0_LINK_HALF_LENGTH, 0, 0));
+	*/}
+
+	// Create last chain link/bar joint
+	{
+		PxRigidActor* actor0 = m_bar;
+		PxRigidActor* actor1 = articulationLinks[EX0_NB_LINKS - 1];
+		PxSphericalJoint* lbjoint = PxSphericalJointCreate(*mPhysics, actor0, PxTransform(0, -EX0_BAR_RADIUS + EX0_LINK_HALF_LENGTH, 0), actor1, PxTransform(EX0_LINK_HALF_LENGTH, 0, 0));
+	}
+#endif
+	mScene->unlockWrite();
 }
 
 void SampleCustom::collectInputEvents(std::vector<const SampleFramework::InputEvent*>& inputEvents)
