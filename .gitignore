@@ -1,3 +1,4 @@
 PhysX/bin/
 PhysX/compiler/
 PhysX/samples/media/
+PhysX/include/PxConfig.h
