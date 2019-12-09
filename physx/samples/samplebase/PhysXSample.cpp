@@ -526,12 +526,12 @@ void PhysXSample::createPvdConnection()
 	//pvd writes data in blocks and filesystems work well with that abstraction.
 	//Second, you don't have the PVD application parsing data and using CPU and memory bandwidth
 	//while your application is running.
-	//physx::PxPvdTransport* transport = physx::PxDefaultPvdFileTransportCreate( "c:\\mywork\\sample.pxd2" );
+	mTransport = physx::PxDefaultPvdFileTransportCreate("E:\\MyPhysX\\PhysX\\PhysX\\compiler\\vc15win64\\sample.pxd2");
 	
 	//The normal way to connect to pvd.  PVD needs to be running at the time this function is called.
 	//We don't worry about the return value because we are already registered as a listener for connections
 	//and thus our onPvdConnected call will take care of setting up our basic connection state.
-	mTransport = physx::PxDefaultPvdSocketTransportCreate(mPvdParams.ip, mPvdParams.port, mPvdParams.timeout);
+	//mTransport = physx::PxDefaultPvdSocketTransportCreate(mPvdParams.ip, mPvdParams.port, mPvdParams.timeout);
 	if(mTransport == NULL)
 		return;
 
@@ -939,7 +939,7 @@ void PhysXSample::onInit()
 	sceneDesc.gpuMaxNumPartitions = 8;
 
 
-	//sceneDesc.solverType = PxSolverType::eTGS;
+	sceneDesc.solverType = PxSolverType::eTGS;
 	
 #ifdef USE_MBP
 	sceneDesc.broadPhaseType = PxBroadPhaseType::eMBP;

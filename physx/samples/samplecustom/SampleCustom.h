@@ -56,6 +56,9 @@
 
 		PxRigidDynamic* m_bar;
 		float m_elapsedTimeSinceFirstPreRender = 0.0f;
+		PxRigidDynamic* m_compoundShapes = nullptr;
+		PxShape* m_shapeToDetach = nullptr;
+		PxRigidDynamic* m_boxSupport[2];
 	};
 
 #endif
